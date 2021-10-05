@@ -1,0 +1,48 @@
+% !TEX program = xelatex
+\documentclass{article}
+%% ---- Set up paper margin ---- %%
+%\usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+%% ---- Headers ---- %%
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguages{thai}
+\newfontfamily\thaifont{Laksaman:script=thai}
+% ตั้งค่าฟอนต์แบบความกว้างคงที่ (monospace) ของเอกสาร
+%\newfontfamily\thaifonttt{Tlwg Typist:script=thai}
+% ตั้งค่าให้ตัดคำภาษาไทย
+\XeTeXlinebreaklocale "th"
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+
+\usepackage{metalogo}
+\title{Multilingual typesetting \XeTeX ~document template}
+\author{Chanoknun Sintavanuruk \\ (\textthai{ชนกนันท์ สินธวานุรักษ์}; 馬予棟)}
+
+\begin{document}
+	\maketitle
+	Hello world. 素晴らしきこの世界。 \textthai{สวัสดีเจ้าโลก}
+	
+	\begin{abstract}
+		This document use \texttt{polyglossia} and \texttt{xeCJK} packages to provide multilingual typesetting in Thai, Chinese, Japanese and Korean. 
+		\begin{thai}
+			ฟอนต์ภาษาไทย \textenglish{\texttt{Laksaman}} เป็นของโครงการ \textenglish{TLWG (Thai Linux Working Group)} 
+			ที่มีความคล้ายกับ \textenglish{\texttt{TH SarabunPSK}} ที่ใช้สำหรับการจัดทำเอกสารใน MS Word	
+		\end{thai}
+	\end{abstract}
+	
+	\section{華語、日本語、\textthai{ภาษาไทย}}
+
+	something something
+
+	\begin{equation}
+		f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz.
+	\end{equation}
+	
+\end{document}
