@@ -31,10 +31,9 @@
 
 %% ---- Theme choice ---- %%
 \usetheme{Berkeley}
-\usecolortheme{beaver}
-% \usecolortheme{dove}
+% \usecolortheme{beaver}
+\usecolortheme{dove}
 % \usecolortheme{spruce}
-% \usecolortheme{structure}
 \logo{\large \XeTeX{}}
 
 %% ---- show TOC after sections ---- %%
@@ -49,7 +48,6 @@
 %% ---- Show notes ---- %%
 \usepackage{pgfpages}
 \setbeameroption{show notes}
-% \setbeamertemplate{note page}[plain]
 \setbeameroption{show notes on second screen=right}
 % for working around text color bug when using XeLaTeX
 \makeatletter 
@@ -61,9 +59,4 @@
 \makeatother
 
 %% ---- page numbers ---- %%
-\setbeamertemplate{page number in head/foot}[totalframenumber]
-\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
-
-%% ---- lists ---- %%
-% \setbeamertemplate{itemize items}[default]
-% \setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{page number in head/foot}[totalframenumber]\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
