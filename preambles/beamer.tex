@@ -1,0 +1,69 @@
+
+%% ---- math packages ---- %%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm} % same functionality as \mathbf{} but for greek letters
+\numberwithin{equation}{section} % equation numbers are formatted as <#Section>.<#eq in the section>
+
+%% ---- define math environment ---- %%
+\usepackage{amsthm}
+
+%% ---- hyperref settings ---- %%
+% \usepackage{hyperref} % Beamer already has hyperref by default
+\usepackage{url}
+\usepackage{cite}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+    }
+
+%% ---- misc. ---- %%
+\usepackage{mhchem} % use chemistry notation
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}} % scale display math environment
+\usepackage{lipsum}
+\usepackage{metalogo} % for extended LaTeX logo such as XeTeX
+\usepackage{subcaption} % allowing subfigure environment
+% \usepackage[section]{placeins} % ensure floats do not go into the next section and allow the use of \FloatBarrier
+\usepackage{graphicx} % allow cropping and rotating images
+
+%% ---- Theme choice ---- %%
+\usetheme{Berkeley}
+\usecolortheme{beaver}
+% \usecolortheme{dove}
+% \usecolortheme{spruce}
+% \usecolortheme{structure}
+\logo{\large \XeTeX{}}
+
+%% ---- show TOC after sections ---- %%
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+    }
+
+%% ---- Show notes ---- %%
+\usepackage{pgfpages}
+\setbeameroption{show notes}
+% \setbeamertemplate{note page}[plain]
+\setbeameroption{show notes on second screen=right}
+% for working around text color bug when using XeLaTeX
+\makeatletter 
+\def\beamer@framenotesbegin{% at beginning of slide
+     \usebeamercolor[fg]{normal text}
+      \gdef\beamer@noteitems{}% 
+      \gdef\beamer@notes{}% 
+}
+\makeatother
+
+%% ---- page numbers ---- %%
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
+
+%% ---- lists ---- %%
+% \setbeamertemplate{itemize items}[default]
+% \setbeamertemplate{enumerate items}[default]
