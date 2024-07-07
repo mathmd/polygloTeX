@@ -1,8 +1,12 @@
 %% ---- allow CJK usage ---- %%
 \usepackage[CJKspace]{xeCJK} % this should be called before Polyglossia
-\setCJKmainfont{Noto Serif CJK TC}
-\setCJKsansfont{Noto Sans CJK TC}
-\setCJKmonofont{Noto Sans Mono CJK TC}
+% \setCJKmainfont{Noto Serif CJK SC}
+% \setCJKsansfont{Noto Sans CJK SC}
+%%% Define fonts for Japanese and Korean
+% \newCJKfontfamily\japanesefont{Noto Serif CJK JP}
+% \setCJKmainfont{Noto Serif CJK TC}
+% \setCJKsansfont{Noto Sans CJK TC}
+% \setCJKmonofont{Noto Sans Mono CJK TC}
 % \setCJKmainfont{Noto Serif JP}
 % \setCJKsansfont{Noto Sans JP}
 % \setCJKmonofont{Noto Sans Mono CJK JP}
@@ -13,12 +17,25 @@
 
 %% ---- font settings ---- %%
 \usepackage{fontspec}
+% \usepackage{xltxtra}
+% \usepackage{fonts-tlwg}
 \defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
 % To change the main font, uncomment one of the below command.
 % \setmainfont{TeX Gyre Termes} % Free Times
 % \setsansfont{TeX Gyre Heros} % Free Helvetica
 % \setmonofont{TeX Gyre Cursor} % Free Courier
-\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{Laksaman} % ตั้งฟอนต์หลักภาษาไทย
+\newfontfamily{\thaifont}[%
+    % Scale=MatchUppercase,
+    % Mapping=textext,
+    ItalicFont={Laksaman-Italic.otf},%
+    BoldFont={Laksaman-Bold.otf},%
+    BoldItalicFont={Laksaman-BoldItalic.otf},%
+    Script=Thai,%
+    Scale=MatchLowercase,%
+    WordSpace=1.25,%
+    Mapping=tex-text,%
+]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
+% \newfontfamily\thaifont[Script=Thai]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
 \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
 \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
 \setTransitionTo{Thai}{\begin{thailang}}
