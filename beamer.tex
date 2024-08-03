@@ -1,63 +1,113 @@
+%% ---- ตั้งค่าให้ตัดคำภาษาไทย ---- %%
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
 
+%% ---- font settings ---- %%
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
+\newfontfamily{\thaifont}[%
+	ItalicFont={Laksaman-Italic.otf},%
+	BoldFont={Laksaman-Bold.otf},%
+	BoldItalicFont={Laksaman-BoldItalic.otf},%
+	Script=Thai,%
+	Scale=MatchLowercase,%
+	WordSpace=1.25,%
+	Mapping=tex-text,%
+]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
+\newfontfamily\thaifontsf{IBM Plex Sans Thai}
+\newfontfamily\thaifonttt{TlwgTypist.otf}
+\newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
+\newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
+\newenvironment{thailang}{\thaifontsf}{} % create environment for Thai language
+\usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
+\setTransitionTo{Thai}{\begin{thailang}}
+		\setTransitionFrom{Thai}{\end{thailang}}
+
+%% ---- allow CJK usage ---- %%
+\usepackage{xeCJK} % this should be called before Polyglossia
+\setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+\setCJKsansfont{Source Han Sans JP}
+\setCJKmonofont{Source Han Mono}
+
+%% ---- spacing between lines ---- %%
+\usepackage{setspace}
+% \singlespacing % default setting
+% \onehalfspacing % recommend using this for Thai language
+
+%% ---- using alphabatic language ---- %%
+\usepackage{polyglossia}
+\setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
+\setotherlanguages{thai}
+
+\AtBeginDocument\captionsthai % allow captions to be in Thai
 %% ---- math packages ---- %%
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm} % same functionality as \mathbf{} but for greek letters
-\usepackage{derivative} % macros for typesetting derivatives
 \numberwithin{equation}{section} % equation numbers are formatted as <#Section>.<#eq in the section>
+\usepackage{cancel}
+\renewcommand\CancelColor{\color{red}}
 
 %% ---- define math environment ---- %%
 \usepackage{amsthm}
+\usepackage{mathrsfs}
 
 %% ---- hyperref settings ---- %%
 % \usepackage{hyperref} % Beamer already has hyperref by default
 \usepackage{url}
-\usepackage{cite}
+% \usepackage{cite}
+\usepackage{natbib}
+\usepackage{bibentry}
 \usepackage{xcolor}
 \hypersetup{
-    colorlinks,
-    linkcolor={red!50!black},
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black}
-    }
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
 
 %% ---- misc. ---- %%
-\usepackage{mhchem} % use chemistry notation
+% \usepackage{mhchem} % use chemistry notation
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}} % scale display math environment
 \usepackage{lipsum}
 \usepackage{metalogo} % for extended LaTeX logo such as XeTeX
 \usepackage{subcaption} % allowing subfigure environment
 % \usepackage[section]{placeins} % ensure floats do not go into the next section and allow the use of \FloatBarrier
 \usepackage{graphicx} % allow cropping and rotating images
+\usepackage{multimedia}
 
 %% ---- Theme choice ---- %%
-\usetheme{Berkeley}
+% \usetheme{metropolis}
+% \usetheme{Berkeley}
 % \usecolortheme{beaver}
-\usecolortheme{dove}
+% \usecolortheme{dove}
 % \usecolortheme{spruce}
 \logo{\large \XeTeX{}}
 
 %% ---- show TOC after sections ---- %%
-\AtBeginSection[]
-{
-    \begin{frame}
-        \frametitle{Outline}
-        \tableofcontents[currentsection]
-    \end{frame}
-    }
+% \AtBeginSection[]
+% {
+%     \begin{frame}
+%         \frametitle{Outline}
+%         \tableofcontents[currentsection]
+%     \end{frame}
+%     }
 
 %% ---- Show notes ---- %%
 \usepackage{pgfpages}
-\setbeameroption{show notes}
-\setbeameroption{show notes on second screen=right}
+% \setbeameroption{show notes}
+% \setbeameroption{show notes on second screen=right}
 % for working around text color bug when using XeLaTeX
-\makeatletter 
+\makeatletter
 \def\beamer@framenotesbegin{% at beginning of slide
-     \usebeamercolor[fg]{normal text}
-      \gdef\beamer@noteitems{}% 
-      \gdef\beamer@notes{}% 
+	\usebeamercolor[fg]{normal text}
+	\gdef\beamer@noteitems{}% 
+	\gdef\beamer@notes{}% 
 }
 \makeatother
 
 %% ---- page numbers ---- %%
-\setbeamertemplate{page number in head/foot}[totalframenumber]\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
+% \setbeamertemplate{page number in head/foot}[totalframenumber]\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
+
+%% ---- figure numbering ---- %%
+\setbeamertemplate{caption}[numbered]

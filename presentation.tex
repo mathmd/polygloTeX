@@ -1,12 +1,16 @@
 % !TEX program = xelatex
-\documentclass[serif]{beamer}
+% \documentclass[serif]{beamer}
+\documentclass{beamer}
+\usefonttheme[onlymath]{serif}
+\setbeamerfont{footnote}{size=\tiny}
 
-% use multiple languages
-\input{polyglot.tex}
+% preambles for Beamer
+\input{beamer.tex}
 
 %% ---- Title page details ---- %%
-\title{Multilingual typesetting \XeTeX ~document template}
-\author[shortname]{Chanoknun Sintavanuruk \\ (ชนกนันท์ สินธวานุรักษ์; 馬予棟) \inst{1}
+\title{Multilingual Beamer Slides}
+\author[shortname]{
+	Chanoknun Sintavanuruk \\ ( ชนกนันท์ สินธวานุรักษ์ ， 馬予棟 ) \inst{1}
 	% \and author2 \inst{2}
 }
 \institute[shortinst]{\inst{1} affiliation
@@ -14,8 +18,20 @@
 }
 \date{\today}
 
-% preambles for Beamer
-\input{beamer.tex}
+
+\usetheme{metropolis}
+% \setbeameroption{show notes on second screen=right}
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamerfont{bibliography item}{size=\scriptsize}
+\setbeamerfont{bibliography entry author}{size=\scriptsize}
+\setbeamerfont{bibliography entry title}{size=\scriptsize}
+\setbeamerfont{bibliography entry location}{size=\scriptsize}
+\setbeamerfont{bibliography entry note}{size=\scriptsize}
+% \renewcommand*{\bibfont}{\scriptsize}
+
+% \theoremstyle{claim}
+% \newtheorem{claim}[theorem]{Claim}
+
 
 \begin{document}
 % Title page frame
@@ -23,7 +39,6 @@
 	\titlepage
 \end{frame}
 % Remove logo from the next slides
-\logo{}
 
 % Outline frame
 \begin{frame}{Outline}

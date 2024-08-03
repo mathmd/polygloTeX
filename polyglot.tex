@@ -12,20 +12,18 @@
 % \setsansfont{TeX Gyre Heros} % Free Helvetica
 % \setmonofont{TeX Gyre Cursor} % Free Courier
 \newfontfamily{\thaifont}[%
-    % Scale=MatchUppercase,
-    % Mapping=textext,
-    ItalicFont={Laksaman-Italic.otf},%
-    BoldFont={Laksaman-Bold.otf},%
-    BoldItalicFont={Laksaman-BoldItalic.otf},%
-    Script=Thai,%
-    Scale=MatchLowercase,%
-    WordSpace=1.25,%
-    Mapping=tex-text,%
+	ItalicFont={Laksaman-Italic.otf},%
+	BoldFont={Laksaman-Bold.otf},%
+	BoldItalicFont={Laksaman-BoldItalic.otf},%
+	Script=Thai,%
+	Scale=MatchLowercase,%
+	WordSpace=1.25,%
+	Mapping=tex-text,%
 ]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
 \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
 \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
 \setTransitionTo{Thai}{\begin{thailang}}
-\setTransitionFrom{Thai}{\end{thailang}}
+		\setTransitionFrom{Thai}{\end{thailang}}
 \newfontfamily\thaifontsf{IBM Plex Sans Thai}
 \newfontfamily\thaifonttt{TlwgTypist.otf}
 \newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
