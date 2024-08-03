@@ -1,16 +1,3 @@
-%% ---- allow CJK usage ---- %%
-\usepackage[CJKspace]{xeCJK} % this should be called before Polyglossia
-% \setCJKmainfont{Noto Serif CJK SC}
-% \setCJKsansfont{Noto Sans CJK SC}
-%%% Define fonts for Japanese and Korean
-% \newCJKfontfamily\japanesefont{Noto Serif CJK JP}
-% \setCJKmainfont{Noto Serif CJK TC}
-% \setCJKsansfont{Noto Sans CJK TC}
-% \setCJKmonofont{Noto Sans Mono CJK TC}
-% \setCJKmainfont{Noto Serif JP}
-% \setCJKsansfont{Noto Sans JP}
-% \setCJKmonofont{Noto Sans Mono CJK JP}
-
 %% ---- ตั้งค่าให้ตัดคำภาษาไทย ---- %%
 \XeTeXlinebreaklocale "th"
 \XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
@@ -35,11 +22,46 @@
     WordSpace=1.25,%
     Mapping=tex-text,%
 ]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
-% \newfontfamily\thaifont[Script=Thai]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
 \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
 \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
 \setTransitionTo{Thai}{\begin{thailang}}
 \setTransitionFrom{Thai}{\end{thailang}}
+\newfontfamily\thaifontsf{IBM Plex Sans Thai}
+\newfontfamily\thaifonttt{TlwgTypist.otf}
+\newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
+\newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
+
+%% ---- allow CJK usage ---- %%
+\usepackage{xeCJK} % this should be called before Polyglossia
+% \setCJKmainfont[
+%     Path = {\string~/.local/share/fonts/},
+%     Extension = .ttf,
+%     % AutoFakeBold=true,
+%     % AutoFakeSlant=true
+%     ]{NotoSerifCJKtc-VF}
+% \setCJKsansfont[
+%     Path = {\string/usr/share/fonts/google-noto-sans-cjk-vf-fonts/},
+%     Extension = .ttf
+%     ]{NotoSansCJK-VF}
+% \setCJKmonofont[
+%     Path = {\string/usr/share/fonts/google-noto-sans-mono-cjk-vf-fonts/},
+%     Extension = .ttf
+%     ]{NotoSansMonoCJK-VF}
+% \setCJKmainfont{Source Han Serif JP}
+\setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+\setCJKsansfont{Source Han Sans JP}
+\setCJKmonofont{Source Han Mono}
+%%% Define fonts for Japanese and Korean
+% \newCJKfontfamily\japanesefont{Noto Serif CJK JP}
+% \setCJKmainfont{Noto Serif CJK TC}
+% \setCJKsansfont{Noto Sans CJK TC}
+% \setCJKmonofont{Noto Sans Mono CJK TC}
+% \setCJKmainfont{Noto Serif CJK JP}
+% \setCJKsansfont{Noto Sans CJK JP}
+% \setCJKmonofont{Noto Sans Mono CJK JP}
+% \setCJKmainfont{IPAMincho}
+% \setCJKsansfont{IPAGothic}
+% \setCJKmonofont{IPAGothic}
 
 %% ---- spacing between lines ---- %%
 \usepackage{setspace}

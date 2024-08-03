@@ -5,7 +5,7 @@
 %\usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 
 % use multiple languages
-\input{preambles/polyglot.tex}
+\input{polyglot.tex}
 
 %% ---- math packages ---- %%
 \usepackage{amsmath}
@@ -29,11 +29,11 @@
 \usepackage{cite}
 \usepackage{xcolor}
 \hypersetup{
-    colorlinks,
-    linkcolor={red!50!black},
-    citecolor={green!50!black},
-    urlcolor={blue!80!black}
-    }
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={green!50!black},
+	urlcolor={blue!80!black}
+}
 
 %% ---- misc. packages ---- %%
 \usepackage{enumitem} % allow customizing list environments: enumerate, itemize and description.
@@ -58,8 +58,8 @@
 \sloppy % ช่วยตัดคำภาษาไทย
 \maketitle
 \begin{abstract}
-	This document use \texttt{polyglossia} and \texttt{xeCJK} packages to provide multilingual typesetting in Thai, Chinese, Japanese and Korean. 
-	ฟอนต์ภาษาไทย \textenglish{\texttt{Laksaman}} เป็นของโครงการ \textenglish{TLWG (Thai Linux Working Group)} ที่มีความคล้ายกับ \textenglish{\texttt{TH SarabunPSK}} ที่ใช้สำหรับการจัดทำเอกสารใน MS Word	
+	\textsf{This} document use \texttt{polyglossia} and \texttt{xeCJK} packages to provide multilingual typesetting in Thai, Chinese, Japanese and Korean.
+	ฟอนต์ภาษาไทย \textenglish{\texttt{Laksaman}} เป็นของโครงการ \textenglish{TLWG (Thai Linux Working Group)} ที่มีความคล้ายกับ \textenglish{\texttt{TH SarabunPSK}} ที่ใช้สำหรับการจัดทำเอกสารใน MS Word
 \end{abstract}
 
 \section{Alphabatic scripts}
@@ -78,28 +78,30 @@ Here is some random equation:
 \end{onehalfspace}
 
 \begin{onehalfspace}
-คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ แจ็กพ็อต ม้าหินอ่อน ซากุระคันถธุระ ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี ศิลปวัฒนธรรมไฟลท์จิ๊กโก๋กับดัก $(x+y)^2$ เจลพล็อตมาม่าซากุระดีลเลอร์ ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส 
+	คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ แจ็กพ็อต ม้าหินอ่อน ซากุระคันถธุระ ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี ศิลปวัฒนธรรมไฟลท์จิ๊กโก๋กับดัก $(x+y)^2$ เจลพล็อตมาม่าซากุระดีลเลอร์ ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส
 
-คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ \emph{แจ็กพ็อต} \textbf{ม้าหินอ่อน} abcd ccddeeff ซากุระคันถธุระ ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี ศิลปวัฒนธรรมไฟลท์จิ๊กโก๋กับดัก เจลพล็อตมาม่าซากุระดีลเลอร์ ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส 
+	คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ \textit{แจ็กพ็อต} \textbf{ม้าหินอ่อน} abcd ccddeeff \texttt{ซากุระคันถธุระ} ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี 哈羅~ศิลปวัฒนธรรม\thaisf{ไฟลท์จิ๊กโก๋กับดัก} \thaitt{เจลพล็อตมาม่าซากุระดีลเลอร์} ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส
 \end{onehalfspace}
 
 
 \section{CJK scripts using \texttt{xeCJK}}
 Here, we use \texttt{noto sans CJK} and \texttt{noto serif CJK} fonts.
 \subsection{繁體字}
-兩個黃鸝鳴翠柳，\textbf{一行白鷺上青天}。
-\texttt{窗含西嶺千秋雪}\textit{，門泊東吳萬里船。}
+兩個黃鸝\textsf{鳴翠柳}，\textbf{一行白鷺上青天}。
+\texttt{窗含西嶺千秋雪}\textit{，東吳萬里船。}
 
 {%\CJKfontspec{Noto Serif CJK JP}
-\subsection{日本語}
-秋来ぬと、
-目にはさやかに見えねども、
-\textbf{風の音にぞおどろかれぬる。}
+	\subsection{日本語}
+	秋来ぬと、
+	目にはさやかに\texttt{見えねども}、
+	\textbf{風の音にぞおどろかれぬる。}
+	目にはさやかに\textsf{見えねども}、
+	\textit{風の音にぞおどろかれぬる。}
 }
 
-\subsection{韓語}
-오늘이오늘이소서매일이오늘이소서
-저물지도새지도말으시고
-새려면늘언제나오늘이소서
+% \subsection{韓語}
+% 오늘이오늘이소서매일이오늘이소서
+% 저물지도새지도말으시고
+% 새려면늘언제나오늘이소서
 
 \end{document}
