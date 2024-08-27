@@ -44,6 +44,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm} % same functionality as \mathbf{} but for greek letters
+% \usepackage{derivative} % macros for typesetting derivatives
 \numberwithin{equation}{section} % equation numbers are formatted as <#Section>.<#eq in the section>
 \usepackage{cancel}
 \renewcommand\CancelColor{\color{red}}
@@ -77,12 +78,12 @@
 \usepackage{multimedia}
 
 %% ---- Theme choice ---- %%
-% \usetheme{metropolis}
+\usetheme{metropolis}
 % \usetheme{Berkeley}
 % \usecolortheme{beaver}
 % \usecolortheme{dove}
 % \usecolortheme{spruce}
-\logo{\large \XeTeX{}}
+% \logo{\large \XeTeX{}}
 
 %% ---- show TOC after sections ---- %%
 % \AtBeginSection[]
@@ -108,6 +109,4 @@
 
 %% ---- page numbers ---- %%
 % \setbeamertemplate{page number in head/foot}[totalframenumber]\setbeamertemplate{navigation symbols}{\footnotesize\usebeamertemplate{page number in head/foot}}
-
-%% ---- figure numbering ---- %%
 \setbeamertemplate{caption}[numbered]
