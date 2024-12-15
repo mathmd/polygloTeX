@@ -1,36 +1,87 @@
 %% ---- ตั้งค่าให้ตัดคำภาษาไทย ---- %%
-\XeTeXlinebreaklocale "th"
-\XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
+% \XeTeXlinebreaklocale "th"
+% \XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
 
 %% ---- font settings ---- %%
+% \tracinglostchars=3
 \usepackage{fontspec}
+\usepackage[english]{babel}
 % \usepackage{xltxtra}
 % \usepackage{fonts-tlwg}
-\defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
+% \defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
 % To change the main font, uncomment one of the below command.
 % \setmainfont{TeX Gyre Termes} % Free Times
 % \setsansfont{TeX Gyre Heros} % Free Helvetica
 % \setmonofont{TeX Gyre Cursor} % Free Courier
-\newfontfamily{\thaifont}[%
+\babelprovide[main,import,onchar=fonts id]{thai}
+\babelprovide[import,onchar=fonts id]{english}
+\defaultfontfeatures{Ligatures=TeX} % Map LaTeX formatting, e.g., ``'' → proper quotes
+\babelfont[thai]{rm}[%
 	ItalicFont={Laksaman-Italic.otf},%
 	BoldFont={Laksaman-Bold.otf},%
 	BoldItalicFont={Laksaman-BoldItalic.otf},%
 	Script=Thai,%
+	% Scale=1.15,
 	Scale=MatchLowercase,%
-	WordSpace=1.25,%
-	Mapping=tex-text,%
+	% WordSpace=0.7,%
+	Ligatures=TeX,
 ]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
-\newenvironment{thailang}{\thaifont}{} % create environment for Thai language
-\usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
-\setTransitionTo{Thai}{\begin{thailang}}
-		\setTransitionFrom{Thai}{\end{thailang}}
+\babelfont[thai]{sf}[%
+	Script=Thai,%
+	% Scale=0.9,
+	Scale=MatchUppercase,%
+	% WordSpace=0.7,%
+	Ligatures=TeX,
+]{IBM Plex Sans Thai} % ตั้งฟอนต์หลักภาษาไทย
+\babelfont[thai]{tt}[%
+	Script=Thai,%
+	% Scale=1.15,
+	Scale=MatchLowercase,%
+	% WordSpace=0.7,%
+	Ligatures=TeX,
+]{TlwgTypist.otf} % ตั้งฟอนต์หลักภาษาไทย
+% \newfontfamily{\thaifont}[%
+% 	ItalicFont={Laksaman-Italic.otf},%
+% 	BoldFont={Laksaman-Bold.otf},%
+% 	BoldItalicFont={Laksaman-BoldItalic.otf},%
+% 	Script=Thai,%
+% 	Scale=MatchLowercase,%
+% 	WordSpace=1.25,%
+% 	% Mapping=tex-text,%
+% ]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
+% \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
+% \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
+% \setTransitionTo{Thai}{\begin{thailang}}
+% 		\setTransitionFrom{Thai}{\end{thailang}}
 \newfontfamily\thaifontsf{IBM Plex Sans Thai}
 \newfontfamily\thaifonttt{TlwgTypist.otf}
-\newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
-\newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
+% \newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
+% \newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
+% \newcommand{\thaitext}[1]{{\thaifont #1}}
+\newcommand{\thaisf}[1]{{\thaifontsf #1}}
+\newcommand{\thaitt}[1]{{\thaifonttt #1}}
+
 
 %% ---- allow CJK usage ---- %%
-\usepackage{xeCJK} % this should be called before Polyglossia
+\usepackage{luatexja} % For handling CJK languages
+\usepackage[match]{luatexja-fontspec}
+% \setmainjfont{TakaoMincho}
+% \setsansjfont{TakaoGothic}
+% \setmonojfont{Komatuna}
+% \newfontfamily\cjkfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+\setmainjfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+% {Noto Serif CJK SC} % CJK font (Chinese, Japanese, Korean)
+% \newfontfamily\cjkfontsf{Noto Sans CJK SC}
+% \newfontfamily\cjkfontsf{Source Han Sans JP}
+\setsansjfont{Source Han Sans JP}
+% \newfontfamily\cjkfonttt{Noto Sans Mono CJK SC}
+% \newfontfamily\cjkfonttt{Source Han Mono}
+\setmonojfont{Source Han Mono}
+
+% \newcommand{\cjktext}[1]{{\cjkfont #1}}   % Inline CJK text
+% \newcommand{\cjksf}[1]{{\cjkfontsf #1}}
+% \newcommand{\cjktt}[1]{{\cjkfonttt #1}}
+% \usepackage{xeCJK} % this should be called before Polyglossia
 % \setCJKmainfont[
 %     Path = {\string~/.local/share/fonts/},
 %     Extension = .ttf,
@@ -46,9 +97,9 @@
 %     Extension = .ttf
 %     ]{NotoSansMonoCJK-VF}
 % \setCJKmainfont{Source Han Serif JP}
-\setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
-\setCJKsansfont{Source Han Sans JP}
-\setCJKmonofont{Source Han Mono}
+% \setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+% \setCJKsansfont{Source Han Sans JP}
+% \setCJKmonofont{Source Han Mono}
 %%% Define fonts for Japanese and Korean
 % \newCJKfontfamily\japanesefont{Noto Serif CJK JP}
 % \setCJKmainfont{Noto Serif CJK TC}
@@ -67,8 +118,8 @@
 % \onehalfspacing % recommend using this for Thai language
 
 %% ---- using alphabatic language ---- %%
-\usepackage{polyglossia}
-\setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
-\setotherlanguages{thai}
+% \usepackage{polyglossia}
+% \setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
+% \setotherlanguages{thai}
 
 \AtBeginDocument\captionsthai % allow captions to be in Thai

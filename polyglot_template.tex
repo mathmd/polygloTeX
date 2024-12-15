@@ -1,4 +1,4 @@
-% !TEX program = xelatex
+% !TEX program = lualatex
 \documentclass{article}
 
 %% ---- Set up paper margin ---- %%
@@ -46,46 +46,52 @@
 
 %% ---- title, authors, and dates ---- %%
 \usepackage{authblk}
-\title{Multilingual typesetting \XeTeX ~document template}
-\author[1]{Chanoknun Sintavanuruk \\ (\textthai{ชนกนันท์ สินธวานุรักษ์}, 馬予棟)}
+\title{Template for multilingual typesetting using \LuaTeX}
+\author[1]{Aiden Sintavanuruk \\ (ชนกนันท์ สินธวานุรักษ์, 馬予棟)}
 % \affil[1]{Department of Physiology, Faculty of Medicine Siriraj Hospital, Mahidol University}
 % \author[2,3]{XXXX XXXX}
 % \affil[2]{Department of XXXX, XXXX University}
 % \affil[3]{Department of XXXX, XXXX University}
 \date{\today}
 
+\babelpatterns{ระ2หว่าง}
+
 \begin{document}
-\sloppy % ช่วยตัดคำภาษาไทย
-\maketitle
-\begin{abstract}
-	\textsf{This} document use \texttt{polyglossia} and \texttt{xeCJK} packages to provide multilingual typesetting in Thai, Chinese, Japanese and Korean.
-	ฟอนต์ภาษาไทย \textenglish{\texttt{Laksaman}} เป็นของโครงการ \textenglish{TLWG (Thai Linux Working Group)} ที่คล้ายกับ \textenglish{\texttt{TH SarabunPSK}} ที่ใช้สำหรับการจัดทำเอกสารใน MS Word
-\end{abstract}
+% \sloppy % ช่วยตัดคำภาษาไทย
+\begin{otherlanguage}{english}
+	\maketitle
+	\begin{abstract}
+		\textsf{This} document use \texttt{babel} and \texttt{luatexja} packages to provide multilingual typesetting in Thai, Chinese and Japanese.
+		ฟอนต์ภาษาไทย \texttt{Laksaman} เป็นของโครงการ TLWG (Thai Linux Working Group) ที่คล้ายกับ \texttt{TH SarabunPSK} \textsf{ที่ใช้สำหรับการจัดทำเอกสารใน MS Word}
+	\end{abstract}
+\end{otherlanguage}
 
 \section{Alphabatic scripts}
-Alphabatic scripts, e.g., Thai, Devanagari, Arabic, Cyrillic, etc., can be used simultaneously by using \texttt{polyglossia} package.
-To ease writing experience, \texttt{ucharclasses} package can be used to automate the language environment switching while the main language remains English.
+Alphabatic scripts, e.g., Thai, Devanagari, Arabic, Cyrillic, etc., can be used simultaneously by using \texttt{babel} package.
+To ease writing experience, \texttt{onchar=fonts id} option can be used when declaring \texttt{\textbackslash babelprovide} to automate the language environment switching.
+Note that for some reason, we also need \texttt{main} option when declaring Thai language; otherwise, it will mess with the spacing when writing a Thai paragraph.
 
 Here is some random equation:
 \begin{equation}
 	f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz.
 \end{equation}
 
+Test \textsf{test ทดสอบ} ทดสอบ
+
 \subsection{ภาษาไทย}
 \begin{onehalfspace}
-	เนื่องจากว่าใช้แพ็คเกจ \texttt{ucharclasses} เราจึงไม่จำเป็นต้องเรียก environment ภาษาไทยทุกครั้ง ทำให้สามารถใช้หลายภาษาพร้อมกันได้โดยสะดวก
 	ในย่อหน้าที่\textbf{ภาษาไทย}เป็นหลักควรตั้งระยะห่างระหว่างบรรทัดด้วยคำสั่ง \texttt{\textbackslash onehalfspacing} หรือเรียก environment ชื่อ \texttt{onehalfspace}
 \end{onehalfspace}
 
 \begin{onehalfspace}
 	คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ แจ็กพ็อต ม้าหินอ่อน ซากุระคันถธุระ ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี ศิลปวัฒนธรรมไฟลท์จิ๊กโก๋กับดัก $(x+y)^2$ เจลพล็อตมาม่าซากุระดีลเลอร์ ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส
 
-	คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ \textit{แจ็กพ็อต} \textbf{ม้าหินอ่อน} abcd ccddeeff \texttt{ซากุระคันถธุระ} ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี 哈羅~ศิลปวัฒนธรรม\thaisf{ไฟลท์จิ๊กโก๋กับดัก} \thaitt{เจลพล็อตมาม่าซากุระดีลเลอร์} ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส
+	คอรัปชันจุ๊ยโปรดิวเซอร์ สถาปัตย์จ๊าบ \textit{แจ็กพ็อต} \textbf{ม้าหินอ่อน} abcd ccddeeff \texttt{ซากุระคันถธุระ} ฟีดสตาร์ท งี้ บอยคอตอิ่มแปร้สังโฆคำสาปแฟนซี 哈羅~ศิลปวัฒนธรรม \textsf{ไฟลท์จิ๊กโก๋กับดัก} เจลพล็อตมาม่าซากุระดีลเลอร์ ซีนดัมพ์ แฮปปี้ เอ๊าะอุรังคธาตุซิม ฟินิกซ์เทรลเล่อร์อวอร์ด แคนยอนสมาพันธ์ ครัวซองฮัมอาข่าเอ็กซ์เพรส
 \end{onehalfspace}
 
 
 \section{CJK scripts using \texttt{xeCJK}}
-Here, we use \texttt{noto sans CJK} and \texttt{noto serif CJK} fonts.
+Here, we use \texttt{UKai TW} and \texttt{Source Han} fonts.
 \subsection{繁體字}
 兩個黃鸝\textsf{鳴翠柳，} \textbf{一行白鷺上青天。}
 \texttt{窗含西嶺千秋雪，}\textit{東吳萬里船。}
