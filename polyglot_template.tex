@@ -1,5 +1,10 @@
 % !TEX program = lualatex
 \documentclass{article}
+% \documentclass[12pt]{amsart}
+%\usepackage{amsaddr}
+\usepackage[draft,noshift]{marktext}
+%% Remove draft for real article, put twocolumn for two columns
+\usepackage[draft]{svmacro}
 
 %% ---- Set up paper margin ---- %%
 %\usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
@@ -8,26 +13,26 @@
 \input{polyglot.tex}
 
 %% ---- math packages ---- %%
-\usepackage{amsmath}
-\usepackage{amssymb}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
 \usepackage{bm} % same functionality as \mathbf{} but for greek letters
-\usepackage{derivative} % macros for typesetting derivatives
+% \usepackage{derivative} % macros for typesetting derivatives
 \numberwithin{equation}{section} % equation numbers are formatted as <#Section>.<#eq in the section>
 
 %% ---- define math environment ---- %%
-\usepackage{amsthm}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{proposition}[definition]{Proposition}
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{corollary}{Corollary}[definition]
-\newtheorem{remark}{Remark}[definition]
-\newtheorem{lemma}[definition]{Lemma}
+% \usepackage{amsthm}
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{proposition}[definition]{Proposition}
+% \newtheorem{theorem}[definition]{Theorem}
+% \newtheorem{corollary}{Corollary}[definition]
+% \newtheorem{remark}{Remark}[definition]
+% \newtheorem{lemma}[definition]{Lemma}
 
 %% ---- hyperref settings ---- %%
-\usepackage{hyperref}
-\usepackage{url}
+% \usepackage{hyperref}
+% \usepackage{url}
 % \usepackage{cite}
-\usepackage{xcolor}
+% \usepackage{xcolor}
 \hypersetup{
 	colorlinks,
 	linkcolor={red!50!black},
@@ -58,17 +63,17 @@
 % \affil[3]{Department of XXXX, XXXX University}
 \date{\today}
 
-\babelpatterns{ระ2หว่าง}
+\input{babelpatterns.tex}
 
 \begin{document}
 % \sloppy % ช่วยตัดคำภาษาไทย
-\begin{otherlanguage}{english}
-	\maketitle
-	\begin{abstract}
-		\textsf{This} document use \texttt{babel} and \texttt{luatexja} packages to provide multilingual typesetting in Thai, Chinese and Japanese.
-		ฟอนต์ภาษาไทย \texttt{Laksaman} เป็นของโครงการ TLWG (Thai Linux Working Group) \cite{noauthor_tlwgfonts-tlwg_2024} ที่คล้ายกับ \texttt{TH SarabunPSK} \textsf{ที่ใช้สำหรับการจัดทำเอกสารใน MS Word}
-	\end{abstract}
-\end{otherlanguage}
+% \begin{otherlanguage}{english}
+\maketitle
+\begin{abstract}
+	\textsf{This} document use \texttt{babel} and \texttt{luatexja} packages to provide multilingual typesetting in Thai, Chinese and Japanese.
+	ฟอนต์ภาษาไทย \texttt{Laksaman} เป็นของโครงการ TLWG (Thai Linux Working Group) \cite{noauthor_tlwgfonts-tlwg_2024} ที่คล้ายกับ \texttt{TH SarabunPSK} \textsf{ที่ใช้สำหรับการจัดทำเอกสารใน MS Word}
+\end{abstract}
+% \end{otherlanguage}
 
 \section{Alphabatic scripts}
 Alphabatic scripts, e.g., Thai, Devanagari, Arabic, Cyrillic, etc., can be used simultaneously by using \texttt{babel} package.
@@ -76,7 +81,7 @@ To ease writing experience, \texttt{onchar=fonts id} option can be used when dec
 Note that for some reason, we also need \texttt{main} option when declaring Thai language; otherwise, it will mess with the spacing when writing a Thai paragraph.
 
 Here is some random equation:
-\begin{equation}
+\begin{equation}\label{eq:eq1}
 	f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz.
 \end{equation}
 
