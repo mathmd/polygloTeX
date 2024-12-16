@@ -6,6 +6,10 @@
 
 % preambles for Beamer
 \input{beamer.tex}
+\setsansfont[
+	BoldFont={FiraSans-SemiBold},
+	ItalicFont={FiraSans-Italic}
+]{FiraSans-Regular}
 
 %% ---- Title page details ---- %%
 \title{Multilingual Beamer Slides}
@@ -45,12 +49,13 @@
 	\tableofcontents
 \end{frame}
 
+
 \section{Section 1}
 \subsection{Subsection 1.1}
 \begin{frame}{Subsection 1.1}
-	\textbf{ทดสอบ}
+	\textbf{ทดสอบ} \cite{hormander_hypoelliptic_1967}
 	\begin{enumerate}
-		\item<1-> item 1
+		\item<1-> \textit{item 1}
 		\item<2-> item 2
 		\item<3-> item 3
 	\end{enumerate}
@@ -62,6 +67,11 @@
 	}
 	\note<2>{item 2}
 	\note<3>{item 3}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\bibliographystyle{plainnat}
+	\tiny\bibliography{bibliography}
 \end{frame}
 
 \end{document}

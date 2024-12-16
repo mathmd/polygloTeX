@@ -26,7 +26,7 @@
 %% ---- hyperref settings ---- %%
 \usepackage{hyperref}
 \usepackage{url}
-\usepackage{cite}
+% \usepackage{cite}
 \usepackage{xcolor}
 \hypersetup{
 	colorlinks,
@@ -43,6 +43,10 @@
 \usepackage{subcaption} % allowing subfigure environment
 % \usepackage[section]{placeins} % ensure floats do not go into the next section and allow the use of \FloatBarrier
 \usepackage{graphicx} % allow cropping and rotating images
+
+%% -------- bibliography -------- %%
+\usepackage[style=alphabetic, backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
 
 %% ---- title, authors, and dates ---- %%
 \usepackage{authblk}
@@ -62,7 +66,7 @@
 	\maketitle
 	\begin{abstract}
 		\textsf{This} document use \texttt{babel} and \texttt{luatexja} packages to provide multilingual typesetting in Thai, Chinese and Japanese.
-		ฟอนต์ภาษาไทย \texttt{Laksaman} เป็นของโครงการ TLWG (Thai Linux Working Group) ที่คล้ายกับ \texttt{TH SarabunPSK} \textsf{ที่ใช้สำหรับการจัดทำเอกสารใน MS Word}
+		ฟอนต์ภาษาไทย \texttt{Laksaman} เป็นของโครงการ TLWG (Thai Linux Working Group) \cite{noauthor_tlwgfonts-tlwg_2024} ที่คล้ายกับ \texttt{TH SarabunPSK} \textsf{ที่ใช้สำหรับการจัดทำเอกสารใน MS Word}
 	\end{abstract}
 \end{otherlanguage}
 
@@ -76,7 +80,8 @@ Here is some random equation:
 	f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz.
 \end{equation}
 
-Test \textsf{test ทดสอบ} ทดสอบ
+Test \textsf{test ทดสอบ} ทดสอบ \cite{guardia_categoriacal_2018}
+
 
 \subsection{ภาษาไทย}
 \begin{onehalfspace}
@@ -109,5 +114,7 @@ Here, we use \texttt{UKai TW} and \texttt{Source Han} fonts.
 % 오늘이오늘이소서매일이오늘이소서
 % 저물지도새지도말으시고
 % 새려면늘언제나오늘이소서
+
+\printbibliography
 
 \end{document}
