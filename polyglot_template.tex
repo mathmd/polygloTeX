@@ -6,6 +6,12 @@
 %% Remove draft for real article, put twocolumn for two columns
 \usepackage[draft]{svmacro}
 
+%% commentary bubble
+% \newcommand{\SV}[2][]{\sidenote[colback=green!10]{\textbf{SV\xspace #1:} #2}}
+\newcommand{\AB}[2][]{\sidenote[colback=teal!10]{\textbf{AB\xspace #1:} #2}}
+\usepackage{cancel}
+\renewcommand{\CancelColor}{\color{red}}
+
 %% ---- Set up paper margin ---- %%
 %\usepackage[a4paper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 
