@@ -1,10 +1,27 @@
-%% ---- ตั้งค่าให้ตัดคำภาษาไทย ---- %%
-\XeTeXlinebreaklocale "th"
-\XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
-
 %% ---- font settings ---- %%
 \usepackage{fontspec}
-\defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
+\usepackage[english]{babel}
+\babelprovide[main,import,onchar=fonts id]{thai}
+\babelprovide[import,onchar=fonts id]{english}
+\defaultfontfeatures{Ligatures=TeX} % Map LaTeX formatting, e.g., ``'' → proper quotes
+\babelfont[thai]{rm}[%
+	ItalicFont={Laksaman-Italic.otf},%
+	BoldFont={Laksaman-Bold.otf},%
+	BoldItalicFont={Laksaman-BoldItalic.otf},%
+	Script=Thai,%
+	Scale=MatchLowercase,%
+	Ligatures=TeX,
+]{Laksaman.otf} %
+\babelfont[thai]{sf}[%
+	Script=Thai,%
+	Scale=MatchUppercase,%
+	Ligatures=TeX,
+]{IBM Plex Sans Thai} % 
+\babelfont[thai]{tt}[%
+	Script=Thai,%
+	Scale=MatchLowercase,%
+	Ligatures=TeX,
+]{TlwgTypist.otf} % ตั้งฟอนต์หลักภาษาไทย
 \newfontfamily{\thaifont}[%
 	ItalicFont={Laksaman-Italic.otf},%
 	BoldFont={Laksaman-Bold.otf},%
@@ -12,22 +29,36 @@
 	Script=Thai,%
 	Scale=MatchLowercase,%
 	WordSpace=1.25,%
-	Mapping=tex-text,%
+	Ligatures=TeX,
 ]{Laksaman.otf} % ตั้งฟอนต์หลักภาษาไทย
-\newfontfamily\thaifontsf{IBM Plex Sans Thai}
-\newfontfamily\thaifonttt{TlwgTypist.otf}
-\newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
-\newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
-\newenvironment{thailang}{\thaifontsf}{} % create environment for Thai language
-\usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
-\setTransitionTo{Thai}{\begin{thailang}}
-		\setTransitionFrom{Thai}{\end{thailang}}
+% \newfontfamily\thaifontsf{IBM Plex Sans Thai}
+% \newfontfamily\thaifonttt{TlwgTypist.otf}
+% \newcommand{\thaisf}[1]{{\uccoff\thaifontsf #1\uccon}}
+% \newcommand{\thaitt}[1]{{\uccoff\thaifonttt #1\uccon}}
+% \newenvironment{thailang}{\thaifontsf}{} % create environment for Thai language
+% \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
+% \setTransitionTo{Thai}{\begin{thailang}}
+% 		\setTransitionFrom{Thai}{\end{thailang}}
 
 %% ---- allow CJK usage ---- %%
-\usepackage{xeCJK} % this should be called before Polyglossia
-\setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
-\setCJKsansfont{Source Han Sans JP}
-\setCJKmonofont{Source Han Mono}
+\usepackage{luatexja} % For handling CJK languages
+\usepackage[match]{luatexja-fontspec}
+% \setmainjfont{TakaoMincho}
+% \setsansjfont{TakaoGothic}
+% \setmonojfont{Komatuna}
+% \newfontfamily\cjkfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+\setmainjfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+% {Noto Serif CJK SC} % CJK font (Chinese, Japanese, Korean)
+% \newfontfamily\cjkfontsf{Noto Sans CJK SC}
+% \newfontfamily\cjkfontsf{Source Han Sans JP}
+\setsansjfont{Source Han Sans JP}
+% \newfontfamily\cjkfonttt{Noto Sans Mono CJK SC}
+% \newfontfamily\cjkfonttt{Source Han Mono}
+\setmonojfont{Source Han Mono}
+% \usepackage{xeCJK} % this should be called before Polyglossia
+% \setCJKmainfont[ ItalicFont=AR PL UKai TW ]{Source Han Serif JP}
+% \setCJKsansfont{Source Han Sans JP}
+% \setCJKmonofont{Source Han Mono}
 
 %% ---- spacing between lines ---- %%
 \usepackage{setspace}
@@ -35,9 +66,9 @@
 % \onehalfspacing % recommend using this for Thai language
 
 %% ---- using alphabatic language ---- %%
-\usepackage{polyglossia}
-\setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
-\setotherlanguages{thai}
+% \usepackage{polyglossia}
+% \setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
+% \setotherlanguages{thai}
 
 \AtBeginDocument\captionsthai % allow captions to be in Thai
 %% ---- math packages ---- %%
